@@ -24,8 +24,39 @@ function playRound(playerSelection, computerSelection) {
         return "Please choose between Rock, Paper and Scissors";
     }
 }
-const computerSelection = getComputerChoice();
-const playerSelection = 'paper';
-
+/*const computerSelection = getComputerChoice();
+const playerSelection = 'rock';
+//
 console.log(playRound(playerSelection, computerSelection));
-console.log(computerSelection);
+console.log(computerSelection);*/
+
+let gamesWon = 0;
+let lostGames = 0;
+let tieGames = 0;
+
+function game(rounds) {
+    if (rounds === 0) {
+          return console.log(`Game Over. You won ${gamesWon} time(s), you lost ${lostGames} time(s) and tie ${tieGames} time(s)`);
+    };
+
+    const computerSelection = getComputerChoice();
+    const playerSelection = prompt("Choose between Rock, Paper and Scissors").toLowerCase();
+
+    let result = playRound(playerSelection, computerSelection);
+    console.log(result);
+
+    if (result.startsWith("You Win!")) {
+        gamesWon++ ;
+    } else if (result.startsWith("You Lose!")) {
+        lostGames++ ;
+    } else if (result === "It's a tie!") {
+        tieGames++ ;
+    } else {
+        return "Please try again";
+    }
+game(rounds - 1);
+
+};
+
+
+console.log(game(5));
