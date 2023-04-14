@@ -36,7 +36,12 @@ let tieGames = 0;
 
 function game(rounds) {
     if (rounds === 0) {
-          return console.log(`Game Over. You won ${gamesWon} time(s), you lost ${lostGames} time(s) and tie ${tieGames} time(s)`);
+        if (gamesWon > lostGames) {
+            return console.log(`Congratulations, you WIN! (You won ${gamesWon} time(s), you lost ${lostGames} time(s) and tie ${tieGames} time(s))`);
+        } else if (lostGames > gamesWon) {
+            return console.log(`Oh... you lost... (You won ${gamesWon} time(s), you lost ${lostGames} time(s) and tie ${tieGames} time(s))`);
+        } else {
+            return console.log(`A tie! (You won ${gamesWon} time(s), you lost ${lostGames} time(s) and tie ${tieGames} time(s))`)}
     };
 
     const computerSelection = getComputerChoice();
@@ -52,7 +57,7 @@ function game(rounds) {
     } else if (result === "It's a tie!") {
         tieGames++ ;
     } else {
-        return "Please try again";
+        return console.log("Please try again");
     }
 game(rounds - 1);
 
