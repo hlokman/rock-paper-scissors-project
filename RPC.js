@@ -34,23 +34,70 @@ let gamesWon = 0;
 let lostGames = 0;
 let tieGames = 0;
 
-function game(rounds) {
-    if (rounds === 0) {
-        if (gamesWon > lostGames) {
-            return console.log(`Congratulations, you WIN! (You won ${gamesWon} time(s), you lost ${lostGames} time(s) and tie ${tieGames} time(s))`);
-        } else if (lostGames > gamesWon) {
-            return console.log(`Oh... you lost... (You won ${gamesWon} time(s), you lost ${lostGames} time(s) and tie ${tieGames} time(s))`);
+
+function game() {
+
+
+    while (gamesWon != 5 && lostGames != 5) {
+        const computerSelection = getComputerChoice();
+        const playerSelection = prompt("Choose between Rock, Paper and Scissors").toLowerCase();
+        let result = playRound(playerSelection, computerSelection);
+
+        if (result.startsWith("You Win")) {
+            gamesWon++;
+            console.log(computerSelection);
+            console.log(result);
+        } else if (result.startsWith("You Lose")) {
+            lostGames++;
+            console.log(computerSelection);
+            console.log(result);
         } else {
-            return console.log(`A tie! (You won ${gamesWon} time(s), you lost ${lostGames} time(s) and tie ${tieGames} time(s))`)}
+            tieGames++;
+            console.log(computerSelection);
+            console.log(result);
+            continue;
+        }
+    }
+
+
+    if (gamesWon > lostGames) {
+        console.log(`Congratulations, you WIN! You're the first to reach 5 victories: you lost ${lostGames} time(s) and you tied ${tieGames} time(s)`);
+    } else {
+        console.log(`Oh... you lost... The computer was the first to reach 5 victories: you won ${gamesWon} time(s) and you tied ${tieGames} time(s)`);
     };
 
-    const computerSelection = getComputerChoice();
-    const playerSelection = prompt("Choose between Rock, Paper and Scissors").toLowerCase();
 
-    let result = playRound(playerSelection, computerSelection);
-    console.log(result);
+    /*console.log(gamesWon);
+    console.log(lostGames);*/
 
-    if (result.startsWith("You Win!")) {
+};
+
+console.log(game());
+
+    /*for (let i=1; i <= gamesWon || i <= lostGames; i++) {
+        const computerSelection = getComputerChoice();
+        const playerSelection = prompt("Choose between Rock, Paper and Scissors").toLowerCase();
+        let result = playRound(playerSelection, computerSelection);
+
+        if (result.startsWith("You Win")) {
+            gamesWon++;
+            console.log(computerSelection);
+            console.log(result);
+        } else if (result.startsWith("You Lose")) {
+            lostGames++;
+            console.log(computerSelection);
+            console.log(result);
+        } else {
+            i--;
+            console.log(computerSelection);
+            console.log(result);
+        }
+    };*/
+    
+    /*console.log(result);
+    console.log(computerSelection);*/
+
+    /*if (result.startsWith("You Win!")) {
         gamesWon++ ;
     } else if (result.startsWith("You Lose!")) {
         lostGames++ ;
@@ -59,9 +106,15 @@ function game(rounds) {
     } else {
         return console.log("Please try again");
     }
-game(rounds - 1);
-
-};
+game(rounds - 1);*/
 
 
-console.log(game(5));
+    /*if (rounds === 0) {
+        if (gamesWon > lostGames) {
+            return console.log(`Congratulations, you WIN! (You won ${gamesWon} time(s), you lost ${lostGames} time(s) and tie ${tieGames} time(s))`);
+        } else if (lostGames > gamesWon) {
+            return console.log(`Oh... you lost... (You won ${gamesWon} time(s), you lost ${lostGames} time(s) and tie ${tieGames} time(s))`);
+        } else {
+            return console.log(`A tie! (You won ${gamesWon} time(s), you lost ${lostGames} time(s) and tie ${tieGames} time(s))`)}
+    };
+*/
