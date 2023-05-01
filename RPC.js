@@ -24,10 +24,60 @@ function playRound(playerSelection, computerSelection) {
         return "Please choose between Rock, Paper and Scissors";
     }
 }
-/*const computerSelection = getComputerChoice();
-const playerSelection = 'rock';
+//const computerSelection = getComputerChoice();
+/*const playerSelection;*/
+
+//Add the different divs
+const container = document.querySelector('.container');
+const text = document.createElement('div');
+text.setAttribute('class', 'textBox');
+container.appendChild(text);
+
+const btnRock = document.createElement('button');
+btnRock.setAttribute('class', 'rock');
+btnRock.textContent='Rock';
+container.appendChild(btnRock);
+//-
+const btnPaper = document.createElement('button');
+btnPaper.setAttribute('class', 'paper');
+btnPaper.textContent='Paper';
+container.appendChild(btnPaper);
+//-
+const btnScissors = document.createElement('button');
+btnScissors.setAttribute('class', 'scissors');
+btnScissors.textContent='Scissors';
+container.appendChild(btnScissors);
+
+// Event Listeners
+btnRock.addEventListener('click', () => {
+    playerSelection = 'rock';
+    computerSelection = getComputerChoice();
+    console.log(computerSelection);
+    console.log(playRound(playerSelection, computerSelection));
+});
+
+
+btnPaper.addEventListener('click', () => {
+    playerSelection = 'paper';
+    computerSelection = getComputerChoice();
+    console.log(computerSelection);
+    console.log(playRound(playerSelection, computerSelection));
+
+});
+
+
+btnScissors.addEventListener('click', () => {
+    playerSelection= 'scissors';
+    computerSelection = getComputerChoice();
+    console.log(computerSelection);
+    console.log(playRound(playerSelection, computerSelection));
+});
+
+
+
+
 //
-console.log(playRound(playerSelection, computerSelection));
+/*console.log(playRound(playerSelection, computerSelection));
 console.log(computerSelection);*/
 
 let gamesWon = 0;
@@ -35,12 +85,10 @@ let lostGames = 0;
 let tieGames = 0;
 
 
-function game() {
-
-
+/*function game() {
     while (gamesWon != 5 && lostGames != 5) {
         const computerSelection = getComputerChoice();
-        const playerSelection = prompt("Choose between Rock, Paper and Scissors").toLowerCase();
+        const playerSelection;
         let result = playRound(playerSelection, computerSelection);
 
         if (result.startsWith("You Win")) {
@@ -66,13 +114,13 @@ function game() {
         console.log(`Oh... you lost... The computer was the first to reach 5 victories: you won ${gamesWon} time(s) and you tied ${tieGames} time(s)`);
     };
 
-
-    /*console.log(gamesWon);
-    console.log(lostGames);*/
-
 };
 
-console.log(game());
+
+console.log(game());*/
+
+
+
 
     /*for (let i=1; i <= gamesWon || i <= lostGames; i++) {
         const computerSelection = getComputerChoice();
@@ -93,7 +141,7 @@ console.log(game());
             console.log(result);
         }
     };*/
-    
+
     /*console.log(result);
     console.log(computerSelection);*/
 
