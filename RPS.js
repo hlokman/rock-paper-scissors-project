@@ -144,11 +144,11 @@ btnBox.addEventListener('click', (e) => {
         } else if (result.startsWith("You Win") && gamesWon == 4) {
             gamesWon ++;
             winsBox.innerText = `${gamesWon}`;
-            return text.innerHTML += `<br>Computer chooses ${computerSelection}: ${result}<br><strong><br>Congratulations, you WIN! You're the first to reach 5 victories: you lost ${lostGames} time(s) and you tied ${tieGames} time(s)</strong>`
+            return text.innerHTML += `<br>Computer chooses ${computerSelection}: ${result}<br><strong><br>Congratulations, you WIN! You're the first to reach 5 victories: you lost ${lostGames} time(s) and you tied ${tieGames} time(s)<br></strong><br>`
         } else if (result.startsWith("You Lose") && lostGames == 4) {
             lostGames++;
             lossesBox.textContent = `${lostGames}`;
-            return text.innerHTML += `<br>Computer chooses ${computerSelection}: ${result}<br><strong><br>Oh... you lost... The computer was the first to reach 5 victories: you won ${gamesWon} time(s) and you tied ${tieGames} time(s)</strong>`;
+            return text.innerHTML += `<br>Computer chooses ${computerSelection}: ${result}<br><strong><br>Oh... you lost... The computer was the first to reach 5 victories: you won ${gamesWon} time(s) and you tied ${tieGames} time(s)<br></strong><br>`;
         } else if (result.startsWith("It's a tie!")) {
             tieGames++;
             tiesBox.textContent = `${tieGames}`
