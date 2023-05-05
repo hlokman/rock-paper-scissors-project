@@ -53,6 +53,10 @@ const text = document.createElement('div');
 text.setAttribute('class', 'textBox');
 container.appendChild(text);
 
+const textDisplay = document.createElement('div');
+textDisplay.setAttribute('class', 'textDisplay');
+text.appendChild(textDisplay);
+
 const scoresBox = document.createElement('div');
 scoresBox.setAttribute('class', 'scoresBox');
 container.appendChild(scoresBox);
@@ -136,23 +140,23 @@ btnBox.addEventListener('click', (e) => {
         if (result.startsWith("You Win") && gamesWon < 4) {
             gamesWon++;
             winsBox.innerText = `${gamesWon}`;
-            return text.innerText += `\n Computer chooses ${computerSelection}: ${result}\n`;
+            return textDisplay.innerText += `\n Computer chooses ${computerSelection}: ${result}\n`;
         } else if (result.startsWith("You Lose") && lostGames < 4) {
             lostGames++;
             lossesBox.textContent = `${lostGames}`;
-            return text.innerText += `\n Computer chooses ${computerSelection}: ${result} \n`;
+            return textDisplay.innerText += `\n Computer chooses ${computerSelection}: ${result} \n`;
         } else if (result.startsWith("You Win") && gamesWon == 4) {
             gamesWon ++;
             winsBox.innerText = `${gamesWon}`;
-            return text.innerHTML += `<br>Computer chooses ${computerSelection}: ${result}<br><strong><br>Congratulations, you WIN! You're the first to reach 5 victories: you lost ${lostGames} time(s) and you tied ${tieGames} time(s)<br></strong><br>`
+            return textDisplay.innerHTML += `<br>Computer chooses ${computerSelection}: ${result}<br><strong><br>Congratulations, you WIN! You're the first to reach 5 victories: you lost ${lostGames} time(s) and you tied ${tieGames} time(s)<br></strong><br>`
         } else if (result.startsWith("You Lose") && lostGames == 4) {
             lostGames++;
             lossesBox.textContent = `${lostGames}`;
-            return text.innerHTML += `<br>Computer chooses ${computerSelection}: ${result}<br><strong><br>Oh... you lost... The computer was the first to reach 5 victories: you won ${gamesWon} time(s) and you tied ${tieGames} time(s)<br></strong><br>`;
+            return textDisplay.innerHTML += `<br>Computer chooses ${computerSelection}: ${result}<br><strong><br>Oh... you lost... The computer was the first to reach 5 victories: you won ${gamesWon} time(s) and you tied ${tieGames} time(s)<br></strong><br>`;
         } else if (result.startsWith("It's a tie!")) {
             tieGames++;
             tiesBox.textContent = `${tieGames}`
-            return text.innerText += `\n Computer chooses ${computerSelection}: ${result} \n`;
+            return textDisplay.innerText += `\n Computer chooses ${computerSelection}: ${result} \n`;
         } 
     };
     /* Previous version that caused an issue (when someone reaches 5 victories, you have to click on a button again to display the final result.

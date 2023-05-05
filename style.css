@@ -6,16 +6,21 @@
 }
 
 .textBox {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+
+}
+
+.textDisplay {
     min-height: 600px;
-    min-width: 700px;
+    width: 60%;
     border: 2px solid black;
     margin-top: 20px;
     margin-bottom: 20px;
-    justify-content: center;
-    align-items: center;
     text-align: center;
-
-    flex: auto;
 }
 
 .btnBox {
@@ -27,7 +32,8 @@
 
 .scoresBox {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 40px;
     margin-bottom: 20px;
 }
 
