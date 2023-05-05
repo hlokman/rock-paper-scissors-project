@@ -1,0 +1,76 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;
+    align-items: center;*/
+}
+
+.textBox {
+    min-height: 600px;
+    min-width: 700px;
+    border: 2px solid black;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    flex: auto;
+}
+
+.btnBox {
+    display: flex;
+    gap:10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.scoresBox {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.wins,
+.ties,
+.losses {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    width: 150px;
+}
+
+.winsBox,
+.tiesBox,
+.lossesBox {
+    border: 3px solid black;
+    height: 30px;
+    width: 35px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.btnBox2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+body {
+    font-family: Roboto, sans-serif;
+    
+    /*height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    flex: auto;
+    */
+}

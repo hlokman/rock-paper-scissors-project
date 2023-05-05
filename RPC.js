@@ -27,142 +27,148 @@ function playRound(playerSelection, computerSelection) {
 //const computerSelection = getComputerChoice();
 /*const playerSelection;*/
 
-//Add the different divs
+// UI (Add the different divs)-------------------------------
 const container = document.querySelector('.container');
-const text = document.createElement('div');
-text.setAttribute('class', 'textBox');
-container.appendChild(text);
+
+const btnBox = document.createElement('div');
+btnBox.setAttribute('class', 'btnBox');
+container.appendChild(btnBox);
 
 const btnRock = document.createElement('button');
 btnRock.setAttribute('class', 'rock');
 btnRock.textContent='Rock';
-container.appendChild(btnRock);
-//-
+btnBox.appendChild(btnRock);
+
 const btnPaper = document.createElement('button');
 btnPaper.setAttribute('class', 'paper');
 btnPaper.textContent='Paper';
-container.appendChild(btnPaper);
-//-
+btnBox.appendChild(btnPaper);
+
 const btnScissors = document.createElement('button');
 btnScissors.setAttribute('class', 'scissors');
 btnScissors.textContent='Scissors';
-container.appendChild(btnScissors);
+btnBox.appendChild(btnScissors);
 
-// Event Listeners
-btnRock.addEventListener('click', () => {
-    playerSelection = 'rock';
-    computerSelection = getComputerChoice();
-    console.log(computerSelection);
-    console.log(playRound(playerSelection, computerSelection));
-});
+const text = document.createElement('div');
+text.setAttribute('class', 'textBox');
+container.appendChild(text);
 
+const scoresBox = document.createElement('div');
+scoresBox.setAttribute('class', 'scoresBox');
+container.appendChild(scoresBox);
 
-btnPaper.addEventListener('click', () => {
-    playerSelection = 'paper';
-    computerSelection = getComputerChoice();
-    console.log(computerSelection);
-    console.log(playRound(playerSelection, computerSelection));
-
-});
-
-
-btnScissors.addEventListener('click', () => {
-    playerSelection= 'scissors';
-    computerSelection = getComputerChoice();
-    console.log(computerSelection);
-    console.log(playRound(playerSelection, computerSelection));
-});
-
-
-
-
+const wins = document.createElement('div');
+wins.setAttribute('class', 'wins');
+scoresBox.appendChild(wins);
 //
-/*console.log(playRound(playerSelection, computerSelection));
-console.log(computerSelection);*/
+const ties = document.createElement('div');
+ties.setAttribute('class', 'ties');
+scoresBox.appendChild(ties);
+//
+const losses = document.createElement('div');
+losses.setAttribute('class', 'losses');
+scoresBox.appendChild(losses);
+//
+const winsBox = document.createElement('div');
+winsBox.setAttribute('class', 'winsBox');
+wins.appendChild(winsBox);
+const tiesBox = document.createElement('div');
+tiesBox.setAttribute('class', 'tiesBox');
+ties.appendChild(tiesBox);
+const lossesBox = document.createElement('div');
+lossesBox.setAttribute('class', 'lossesBox');
+losses.appendChild(lossesBox);
 
+const winsText = document.createElement('div');
+winsText.setAttribute('class', 'winsText');
+winsText.textContent='Player Score';
+wins.appendChild(winsText);
+
+const tiesText = document.createElement('div');
+tiesText.setAttribute('class', 'tiesText');
+tiesText.textContent='Ties';
+ties.appendChild(tiesText);
+
+const lossesText = document.createElement('div');
+lossesText.setAttribute('class', 'lossesText');
+lossesText.textContent='Computer Score';
+losses.appendChild(lossesText);
+
+const btnBox2 = document.createElement('div');
+btnBox2.setAttribute('class', 'btnBox2');
+container.appendChild(btnBox2);
+//
+const btnRestart = document.createElement('button');
+btnRestart.setAttribute('class', 'restart');
+btnRestart.textContent='Restart';
+btnBox2.appendChild(btnRestart);
+//-----------------------------------------------------------
+
+
+
+
+// The game--------------------------------------------------
 let gamesWon = 0;
 let lostGames = 0;
 let tieGames = 0;
 
+winsBox.innerText = `${gamesWon}`;
+lossesBox.textContent = `${lostGames}`;
+tiesBox.textContent = `${tieGames}`
 
-/*function game() {
-    while (gamesWon != 5 && lostGames != 5) {
+// Event Listeners
+//const controller = new AbortController();
+
+btnBox.addEventListener('click', (e) => {
+
+    if (e.target.className == 'rock') {
+        playerSelection = 'rock'
+    } else if (e.target.className == 'paper') {
+        playerSelection = 'paper'
+    } else if (e.target.className == 'scissors') {
+        playerSelection = 'scissors'
+    };
+    
+    while (gamesWon !== 5 && lostGames !== 5) {
         const computerSelection = getComputerChoice();
-        const playerSelection;
         let result = playRound(playerSelection, computerSelection);
 
-        if (result.startsWith("You Win")) {
+        if (result.startsWith("You Win") && gamesWon < 4) {
             gamesWon++;
-            console.log(computerSelection);
-            console.log(result);
-        } else if (result.startsWith("You Lose")) {
+            winsBox.innerText = `${gamesWon}`;
+            return text.innerText += `\n Computer chooses ${computerSelection}: ${result}\n`;
+        } else if (result.startsWith("You Lose") && lostGames < 4) {
             lostGames++;
-            console.log(computerSelection);
-            console.log(result);
-        } else {
+            lossesBox.textContent = `${lostGames}`;
+            return text.innerText += `\n Computer chooses ${computerSelection}: ${result} \n`;
+        } else if (result.startsWith("You Win") && gamesWon == 4) {
+            gamesWon ++;
+            winsBox.innerText = `${gamesWon}`;
+            return text.innerHTML += `<br>Computer chooses ${computerSelection}: ${result}<br><strong><br>Congratulations, you WIN! You're the first to reach 5 victories: you lost ${lostGames} time(s) and you tied ${tieGames} time(s)</strong>`
+        } else if (result.startsWith("You Lose") && lostGames == 4) {
+            lostGames++;
+            lossesBox.textContent = `${lostGames}`;
+            return text.innerHTML += `<br>Computer chooses ${computerSelection}: ${result}<br><strong><br>Oh... you lost... The computer was the first to reach 5 victories: you won ${gamesWon} time(s) and you tied ${tieGames} time(s)</strong>`;
+        } else if (result.startsWith("It's a tie!")) {
             tieGames++;
-            console.log(computerSelection);
-            console.log(result);
-            continue;
-        }
-    }
-
+            tiesBox.textContent = `${tieGames}`
+            return text.innerText += `\n Computer chooses ${computerSelection}: ${result} \n`;
+        } 
+    };
+    /* Previous version that caused an issue (when someone reaches 5 victories, you have to click on a button again to display the final result.
+        The version below allows to end the loop and the text displaying without adding an AbortSignal
 
     if (gamesWon > lostGames) {
-        console.log(`Congratulations, you WIN! You're the first to reach 5 victories: you lost ${lostGames} time(s) and you tied ${tieGames} time(s)`);
-    } else {
-        console.log(`Oh... you lost... The computer was the first to reach 5 victories: you won ${gamesWon} time(s) and you tied ${tieGames} time(s)`);
-    };
-
-};
-
-
-console.log(game());*/
-
-
-
-
-    /*for (let i=1; i <= gamesWon || i <= lostGames; i++) {
-        const computerSelection = getComputerChoice();
-        const playerSelection = prompt("Choose between Rock, Paper and Scissors").toLowerCase();
-        let result = playRound(playerSelection, computerSelection);
-
-        if (result.startsWith("You Win")) {
-            gamesWon++;
-            console.log(computerSelection);
-            console.log(result);
-        } else if (result.startsWith("You Lose")) {
-            lostGames++;
-            console.log(computerSelection);
-            console.log(result);
-        } else {
-            i--;
-            console.log(computerSelection);
-            console.log(result);
-        }
+        text.innerHTML += `<strong><br>Congratulations, you WIN! You're the first to reach 5 victories: you lost ${lostGames} time(s) and you tied ${tieGames} time(s)</strong>`;
+        controller.abort();
+    } else if (lostGames > gamesWon) {
+        text.innerHTML += `<strong><br>Oh... you lost... The computer was the first to reach 5 victories: you won ${gamesWon} time(s) and you tied ${tieGames} time(s)</strong>`;
+        controller.abort();
     };*/
+}/*, 
+{ signal: controller.signal }*/
+);
 
-    /*console.log(result);
-    console.log(computerSelection);*/
-
-    /*if (result.startsWith("You Win!")) {
-        gamesWon++ ;
-    } else if (result.startsWith("You Lose!")) {
-        lostGames++ ;
-    } else if (result === "It's a tie!") {
-        tieGames++ ;
-    } else {
-        return console.log("Please try again");
-    }
-game(rounds - 1);*/
-
-
-    /*if (rounds === 0) {
-        if (gamesWon > lostGames) {
-            return console.log(`Congratulations, you WIN! (You won ${gamesWon} time(s), you lost ${lostGames} time(s) and tie ${tieGames} time(s))`);
-        } else if (lostGames > gamesWon) {
-            return console.log(`Oh... you lost... (You won ${gamesWon} time(s), you lost ${lostGames} time(s) and tie ${tieGames} time(s))`);
-        } else {
-            return console.log(`A tie! (You won ${gamesWon} time(s), you lost ${lostGames} time(s) and tie ${tieGames} time(s))`)}
-    };
-*/
+btnRestart.addEventListener('click', () => {
+    document.location.reload();
+});
