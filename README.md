@@ -27,4 +27,4 @@ It was a great way to practice and see how event objects and event bubbling work
 
 Throughout the project I stumble upon a lot of issues but I overcame them by searching new tools to solve them. I have dealt with issues concerning functions' scopes and this project allowed me to get a better understanding of how scopes work. 
 
-[Live Demo](https://hlokman.github.io/rock-paper-scissors-project/)
+[Live Demo](https://hlokman.github.io/rock-paper-scissors-project/) 
