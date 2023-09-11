@@ -26,3 +26,5 @@ It was a great way to practice and see how event objects and event bubbling work
 - Adding divs through DOM methods without directly editing the .html in order to create the UI. It was also a way to re-practice my CSS's knowledge using flexbox properties to make the (first version of the) UI looks like how I wanted
 
 Throughout the project I stumble upon a lot of issues but I overcame them by searching new tools to solve them. I have dealt with issues concerning functions' scopes and this project allowed me to get a better understanding of how scopes work. 
+
+[Live Demo](https://hlokman.github.io/rock-paper-scissors-project/)
